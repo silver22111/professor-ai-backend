@@ -8,6 +8,8 @@ app = FastAPI(title="🎓 Professor AI Secure Backend Engine")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 user_database = {}
+from ai_tools import router as tools_router
+app.include_router(tools_router)
 
 class UserRegister(BaseModel):
     name: str
